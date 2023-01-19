@@ -4,7 +4,28 @@ which takes two numbers and an operator as arguments, and returns the result of 
 For example calculator(1, 2, "+") should return 3.
 */
 function calculator(num1, num2, operator) {
-  /* Your code goes here */
+  let result = 0;
+  switch (operator) {
+    case "+":
+      result = num1 + num2;
+      break;
+    case "-":
+      result = num1 - num2;
+      break;
+    case "*":
+      result = num1 * num2;
+      break;
+    case "/":
+      result = num1 / num2;
+      break;
+    case "%":
+      result = num1 % num2;
+      break;
+    default:
+      break;
+      }
+  
+  return result;
 }
 
 /* Task 2 - Write a function, which creates objects describing a person.
@@ -26,7 +47,18 @@ The function should return an object with the following properties:
   }
 */
 function createPerson(name, surname, age) {
-  /* Your code goes here */
+  // an empty obj
+  let myObj = {};
+
+  // assigning values
+  myObj.name = name;
+  myObj.surname = surname;
+  myObj.age = age;
+  myObj.fullName = name + " " + surname;
+  myObj.isAdult = age >= 18 ? true : false;
+
+  return myObj;
+
 }
 
 /*
@@ -45,7 +77,14 @@ if the person is not an adult.
 Notice that <name>, <surname> and <age> fields should be replaced with the actual values from the object.
 */
 function personToString(person) {
-  /* Your code goes here */
+  // destructuring
+  let { isAdult, name, surname, age } = person;
+
+  // check
+  if (isAdult) {
+    return `The person ${name}, ${surname} is ${age} years old, and is an adult`;
+  }
+  return `The person ${name}, ${surname} is ${age} years old, and is an minor`;
 }
 
 /* Task 4 - Write a function, which takes an object as a parameter. 
@@ -60,28 +99,38 @@ function personToString(person) {
     "<name> has a population of <population>"
 */
 function cityNameAndPopulationToString(city) {
-  /* Your code goes here */
+ // destructuring
+  let { name, population } = city;
+
+  // returning
+  return `${name} has a population of ${population}`;
+
 }
 
 /* Task 5 - Write a function, which takes the same kind of object as parameter as the function in Task 4.
    The function should return boolan value true if the city is a capital, false otherwise.
 */
 function isCapital(city) {
-  /* Your code goes here */
+  // i used Conditional (ternary) operator
+  return city.isCapital ? true : false;
+
 }
 
 /* Task 6 - Write a function, which takes the same kind of object as parameter as the function in Task 4.
    The function should return the name of the country the city is located in.
 */
 function getCountryName(city) {
-  /* Your code goes here */
+  // i used Conditional (ternary) operator
+  // accessing 'cuntry' property of the 'city' object
+  return city.country;
 }
 
 /* Task 7 - Write a function, which takes two parameters. Both parameters are of the same city object type as the function in Task 4.
    The function should return the city with the larger population.
 */
 function getLargerPopulation(city1, city2) {
-  /* Your code goes here */
+  // i used Conditional (ternary) operator here to identify which city has the bigger population
+  return city1.population > city2.population ? city1 : city2;
 }
 
 /* Task 8 - Write a function, which takes the same parameters as the function in Task 7.
@@ -89,7 +138,11 @@ function getLargerPopulation(city1, city2) {
    "<name of the city with larger population> has larger population than <name of the city with smaller population>"
 */
 function getLargerPopulationString(city1, city2) {
-  /* Your code goes here */
+  // used ternary operator for condition checking
+  // used template literal `` for my easy
+  return city1.population > city2.population
+    ? `${city1.name} has larger population than ${city2.name}`
+    : `${city2.name} has larger population than ${city1.name}`;
 }
 
 /* Export all the functions you have written above. 
